@@ -1,38 +1,5 @@
-/* CLIENT-SIDE JS
- *
- * You may edit this file as you see fit.  Try to separate different components
- * into functions and objects as needed.
- *
- */
+// CLIENT-SIDE JS
 
-
-/* hard-coded data! */
-// var sampleAlbums = [];
-// sampleAlbums.push({
-//              artistName: 'Ladyhawke',
-//              name: 'Ladyhawke',
-//              releaseDate: '2008, November 18',
-//              genres: [ 'new wave', 'indie rock', 'synth pop' ]
-//            });
-// sampleAlbums.push({
-//              artistName: 'The Knife',
-//              name: 'Silent Shout',
-//              releaseDate: '2006, February 17',
-//              genres: [ 'synth pop', 'electronica', 'experimental' ]
-//            });
-// sampleAlbums.push({
-//              artistName: 'Juno Reactor',
-//              name: 'Shango',
-//              releaseDate: '2000, October 9',
-//              genres: [ 'electronic', 'goa trance', 'tribal house' ]
-//            });
-// sampleAlbums.push({
-//              artistName: 'Philip Wesley',
-//              name: 'Dark Night of the Soul',
-//              releaseDate: '2008, September 12',
-//              genres: [ 'piano' ]
-//            });
-/* end of hard-coded data */
 
 
 $(document).ready(function() {
@@ -44,6 +11,18 @@ $(document).ready(function() {
     error: onError
   })
 
+  // $('form').on('submit', function(event){
+  $('#addArtistInfoBtn').click(function(event){
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: '/api/albums',
+      data: $('form').serialize(),
+      success: postAlbum,
+      error: onError
+    });
+  });
+
 });
 
 // iterates through all returned albums
@@ -51,6 +30,11 @@ function getAlbums(res){
   res.forEach(function(album){
     renderAlbum(album);
   })
+}
+
+// posts an album to the database
+function postAlbum(res) {
+  console.log("Album Post!");
 }
 
 // this function takes a single album and renders it to the page
