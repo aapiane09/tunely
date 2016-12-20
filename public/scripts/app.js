@@ -42,6 +42,17 @@ function handleNewSong(){
     song: songNameVal,
     trackNumber: trackNumberVal
   };
+  $.ajax({
+    method: "POST",
+    url: '/api/albums/' + $('#songModal').data('data-album-id') + '/songs',
+    data: newSongEntry,
+    success: postSong,
+    error: onError
+  });
+
+  function postSong (data) {
+    console.log(data);
+  }
 }
 
 // iterates through all returned albums
