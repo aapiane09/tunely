@@ -11,7 +11,6 @@ $(document).ready(function() {
     error: onError
   })
 
-  // $('form').on('submit', function(event){
   $('#addArtistInfoBtn').click(function(event){
     event.preventDefault();
     $.ajax({
@@ -23,7 +22,27 @@ $(document).ready(function() {
     });
   });
 
+  $('#albums').on('click', '.add-song', function(){
+    var id= $(this).closest('.album').data('album-id');
+    $('#songModal').data('data-album-id',id);
+    $('#songModal').modal('show');
+  })
+
+  $('#saveSong').on('click', function(event){
+    event.preventDefault();
+    handleNewSong();
+  })
+
 });
+
+function handleNewSong(){
+  var songNameVal = $('input#songName').val();
+  var trackNumberVal = $('input#trackNumber').val();
+  var newSongEntry = {
+    song: songNameVal,
+    trackNumber: trackNumberVal
+  };
+}
 
 // iterates through all returned albums
 function getAlbums(res){
@@ -45,9 +64,11 @@ function renderAlbum(album) {
   var albumHtml = albumTemplate({
     name: album.name,
     artistName: album.artistName,
-    releaseDate: album.releaseDate
+    releaseDate: album.releaseDate,
+    songs: album.songs,
+    id: album._id
   });
-  $('.panel-body').append(albumHtml);
+  $('#albums').append(albumHtml);
 
 }
 
