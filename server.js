@@ -20,6 +20,7 @@ app.get('/api/albums', controllers.albums.index);
 
 app.post('/api/albums', controllers.albums.create);
 
+app.post('/api/albums/:dataAlbumId/songs', controllers.albumsSong.create)
 
 app.listen(3000, function() {
     console.log("Listening at Port 3000!");

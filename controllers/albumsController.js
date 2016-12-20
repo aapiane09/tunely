@@ -31,7 +31,6 @@ function create(req, res) {
 
 // GET /api/albums/:albumId
 function show(req, res) {
-  // find one album by id and send it back as JSON
 }
 
 // DELETE /api/albums/:albumId
@@ -41,10 +40,17 @@ function destroy(req, res) {
 
 // PUT or PATCH /api/albums/:albumId
 function update(req, res) {
+  db.Album.findOne({_id : req.params._id})
   // find one album by id, update it based on request body,
   // and send it back as JSON
 }
 
+// // POST /api/albums/:album_id/songs
+// function createSong(req, res) {
+//   var newSong = new db.Song({
+//
+//   })
+// }
 
 // controllers/albumsController.js
 module.exports = {

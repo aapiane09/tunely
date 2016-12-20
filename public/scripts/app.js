@@ -39,12 +39,14 @@ function handleNewSong(){
   var songNameVal = $('input#songName').val();
   var trackNumberVal = $('input#trackNumber').val();
   var newSongEntry = {
-    song: songNameVal,
+    name: songNameVal,
     trackNumber: trackNumberVal
   };
+  console.log($('#songModal').data('data-album-id'));
+  var dataAlbumId = $('#songModal').data('data-album-id');
   $.ajax({
     method: "POST",
-    url: '/api/albums/' + $('#songModal').data('data-album-id') + '/songs',
+    url: '/api/albums/' + dataAlbumId + '/songs',
     data: newSongEntry,
     success: postSong,
     error: onError
