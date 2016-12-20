@@ -18,7 +18,7 @@ function create(req, res) {
         artistName: req.body.artistName,
         name: req.body.name,
         releaseDate: req.body.releaseDate,
-        genres: req.body.genres
+        genres: req.body.genres.split(',')
     });
     newAlbum.save(function(err, album) {
         if (err) {

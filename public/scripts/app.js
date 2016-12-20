@@ -34,7 +34,8 @@ function getAlbums(res){
 
 // posts an album to the database
 function postAlbum(res) {
-  console.log("Album Post!");
+  console.log("Album Post!", res);
+  renderAlbum(res);
 }
 
 // this function takes a single album and renders it to the page
