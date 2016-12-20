@@ -11,7 +11,6 @@ $(document).ready(function() {
     error: onError
   })
 
-  // $('form').on('submit', function(event){
   $('#addArtistInfoBtn').click(function(event){
     event.preventDefault();
     $.ajax({
@@ -22,6 +21,16 @@ $(document).ready(function() {
       error: onError
     });
   });
+
+  $('#albums').on('click', '.add-song', function(){
+    var id= $(this).closest('.album').data('album-id');
+    $('#songModal').data('data-album-id',id);
+    $('#songModal').modal('show');
+  })
+
+  // $('#saveSong').on('click', function(){
+  //   handleNew
+  // })
 
 });
 
@@ -46,9 +55,10 @@ function renderAlbum(album) {
     name: album.name,
     artistName: album.artistName,
     releaseDate: album.releaseDate,
-    songs: album.songs
+    songs: album.songs,
+    id: album._id
   });
-  $('.panel-body').append(albumHtml);
+  $('#albums').append(albumHtml);
 
 }
 
