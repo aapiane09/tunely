@@ -45,7 +45,8 @@ function renderAlbum(album) {
   var albumHtml = albumTemplate({
     name: album.name,
     artistName: album.artistName,
-    releaseDate: album.releaseDate
+    releaseDate: album.releaseDate,
+    songs: album.songs
   });
   $('.panel-body').append(albumHtml);
 

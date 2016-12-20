@@ -98,6 +98,12 @@
                                                 <h4 class='inline-header'>Release Date:</h4>
                                                 <span class='album-releaseDate'>{{releaseDate}}</span>
                                             </li>
+                                            <li class="list-group-item">
+                                              <h4 class="inline-header">Songs:</h4>
+                                              {{#each songs}}
+                                                <span>   - ({{@trackNumber}}{{trackNumber}}) {{@name}}{{songs}} </span>
+                                              {{/each}}
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
