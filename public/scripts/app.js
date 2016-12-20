@@ -28,11 +28,21 @@ $(document).ready(function() {
     $('#songModal').modal('show');
   })
 
-  // $('#saveSong').on('click', function(){
-  //   handleNew
-  // })
+  $('#saveSong').on('click', function(event){
+    event.preventDefault();
+    handleNewSong();
+  })
 
 });
+
+function handleNewSong(){
+  var songNameVal = $('input#songName').val();
+  var trackNumberVal = $('input#trackNumber').val();
+  var newSongEntry = {
+    song: songNameVal,
+    trackNumber: trackNumberVal
+  };
+}
 
 // iterates through all returned albums
 function getAlbums(res){
